@@ -10,7 +10,7 @@
 if (!defined('e107_INIT')) { exit; }
 
 
-class userlanguage_flags_menu_shortcodes  extends e_shortcode
+class userlanguage_flags_shortcodes  extends e_shortcode
 {
 		
 	public $var;
@@ -29,8 +29,8 @@ class userlanguage_flags_menu_shortcodes  extends e_shortcode
 	{
 		parent::__construct();
 		// Get plugin preferences.
-		$this->plugPrefs = e107::getPlugConfig('userlanguage_flags_menu')->getPref();
-		$this->plugTemplates = e107::getTemplate('userlanguage_flags_menu', 'ulflags');
+		$this->plugPrefs = e107::getPlugConfig('userlanguage_flags')->getPref();
+		$this->plugTemplates = e107::getTemplate('userlanguage_flags', 'ulflags');
 	}
 
 	function sc_ulf_action($parm='') {
@@ -52,7 +52,7 @@ class userlanguage_flags_menu_shortcodes  extends e_shortcode
 	
 	function sc_ulf_langitem($parm='') {
 		$parms 		= eHelper::scParams($parm);
-		$sc = e107::getScBatch('userlanguage_flags_menu'); 
+		$sc = e107::getScBatch('userlanguage_flags'); 
 		
 		$flagsize 	= vartrue($parms['flagsize']) ? $parms['flagsize'] : $this->plugPrefs['lanflags_size'];
 		$flagtype 	= vartrue($parms['flagtype']) ? $parms['flagtype'] : $this->plugPrefs['lanflags_typ'];
@@ -81,7 +81,7 @@ class userlanguage_flags_menu_shortcodes  extends e_shortcode
 		$template 		  = varset($parms['template'],'default');
 		$languageList = explode(',', e_LANLIST);
 		sort($languageList);
-		$sc = e107::getScBatch('userlanguage_flags_menu');    
+		$sc = e107::getScBatch('userlanguage_flags');    
 		$text1   = e107::getParser()->parseTemplate($this->plugTemplates[$template ]['start'], false, $sc);
 		$text2   = e107::getParser()->parseTemplate($this->plugTemplates[$template ]['body'], false, $sc);
 		$text3   = e107::getParser()->parseTemplate($this->plugTemplates[$template ]['end'], false, $sc); 
@@ -90,7 +90,7 @@ class userlanguage_flags_menu_shortcodes  extends e_shortcode
 
 	function sc_ulflags_old($parm='')
 	{
-		$pref = e107::pref('userlanguage_flags_menu');		
+		$pref = e107::pref('userlanguage_flags');		
 		if($pref['lanflags_title'] ==''){
 		}    
 		if(!$pref['user_lan_use']){
@@ -117,7 +117,7 @@ class userlanguage_flags_menu_shortcodes  extends e_shortcode
 				$text .= "<form method='post' action='".$action."' style='display:inline;' class='lan_flag'><p style='display:inline;'>
 				<input type='hidden' name='setlanguage' value='".USLFM_P_5."' />
 				<input type='hidden' name='sitelanguage' value='".$langval."' />
-				<input type='image' style='display:inline' src='".e_PLUGIN_ABS."userlanguage_flags_menu/flags/".$pref['lanflags_typ']."/".$langval.".png' alt='".$langval."' title='".$langval."' width='".$pref['lanflags_size']."' /> </p>
+				<input type='image' style='display:inline' src='".e_PLUGIN_ABS."userlanguage_flags/flags/".$pref['lanflags_typ']."/".$langval.".png' alt='".$langval."' title='".$langval."' width='".$pref['lanflags_size']."' /> </p>
 				</form>\n";
 				}
 			}

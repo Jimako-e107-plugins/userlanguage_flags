@@ -2,7 +2,7 @@
 /*
 + ----------------------------------------------------------------------------------------------------+
 |        e107 website system 
-|        Plugin file :  e107_plugins/userlanguage_flags_menu/userlanguage_flags_menu.php
+|        Plugin file :  e107_plugins/userlanguage_flags/userlanguage_flags.php
 |        Revision    1.5
 |        Date        26.07.2013
 |        Author      JmoRava, Oxigen ( www.e107.funsite.cz ) 
@@ -15,12 +15,12 @@ if(!defined('e107_INIT'))
 	exit;
 }
  
-if(!e107::isInstalled('userlanguage_flags_menu'))
+if(!e107::isInstalled('userlanguage_flags'))
 {
 	e107::redirect(e_BASE . 'index.php');
 }
 
-$pref = e107::pref('userlanguage_flags_menu'); 
+$pref = e107::pref('userlanguage_flags'); 
 
 unset($text);
 
@@ -53,7 +53,7 @@ if(!$pref['user_lan_use']){
 		$text .= "<form method='post' action='".$action."' style='display:inline;' class='lan_flag'>
     <p style='display:inline;'><input type='hidden' name='setlanguage' value='".USLFM_P_5."' />
     <input type='hidden' name='sitelanguage' value='".$langval."' />
-    <input type='image' style='display:inline' src='".e_PLUGIN_ABS."userlanguage_flags_menu/flags/".$pref['lanflags_typ']."/".$langval.".png' alt='".$langval."' title='".$langval."' width='".$pref['lanflags_size']."' /> </p></form>\n";
+    <input type='image' style='display:inline' src='".e_PLUGIN_ABS."userlanguage_flags/flags/".$pref['lanflags_typ']."/".$langval.".png' alt='".$langval."' title='".$langval."' width='".$pref['lanflags_size']."' /> </p></form>\n";
 		}
 	}
 	$text .= "</div>";

@@ -4,7 +4,7 @@
 |        e107 website content management system Hungarian Language File
 |        Released under the terms and conditions of the
 |        GNU General Public License (http://gnu.org).
-|        Plugin file :  e107_plugins/userlanguage_flags_menu/languages/English.php
+|        Plugin file :  e107_plugins/userlanguage_flags/languages/English.php
 |        Revision    1.5
 |        Date        26.07.2013
 |        Author      JmoRava, Oxigen ( www.e107.funsite.cz )

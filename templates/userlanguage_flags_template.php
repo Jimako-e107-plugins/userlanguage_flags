@@ -9,7 +9,7 @@ $ULFLAGS_TEMPLATE['default']['item'] = "
 <form method='post' action='{ULF_ACTION}' style='display:inline;'>
   <p style='display:inline;'><input type='hidden' name='setlanguage' value='".USLFM_P_5."' />
   <input type='hidden' name='sitelanguage' value='{ULF_LANGVAL}' />
-  <input type='image' style='display:inline' src='".e_PLUGIN_ABS."userlanguage_flags_menu/flags/{ULF_FLAGTYPE}/{ULF_LANGVAL}.png' 
+  <input type='image' style='display:inline' src='".e_PLUGIN_ABS."userlanguage_flags/flags/{ULF_FLAGTYPE}/{ULF_LANGVAL}.png' 
   alt='{ULF_LANGVAL}' title='{ULF_LANGVAL}' width='{ULF_FLAGSIZE}' '> 
   <input type='submit' class='no-button'  style='display:inline' value='{ULF_LANGVAL}' title='{ULF_LANGVAL}' > 
   </p> 

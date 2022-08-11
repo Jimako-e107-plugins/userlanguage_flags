@@ -11,15 +11,15 @@ if (!getperms('P'))
 
 
 
-class userlanguage_flags_menu_adminArea extends e_admin_dispatcher
+class userlanguage_flags_adminArea extends e_admin_dispatcher
 {
 
 	protected $modes = array(	
 	
 		'main'	=> array(
-			'controller' 	=> 'userlanguage_flags_menu_ui',
+			'controller' 	=> 'userlanguage_flags_ui',
 			'path' 			=> null,
-			'ui' 			=> 'userlanguage_flags_menu_form_ui',
+			'ui' 			=> 'userlanguage_flags_form_ui',
 			'uipath' 		=> null
 		),
 		
@@ -41,12 +41,12 @@ class userlanguage_flags_menu_adminArea extends e_admin_dispatcher
 	protected $menuTitle = USLFM_P_1;
 }
 				
-class userlanguage_flags_menu_ui extends e_admin_ui
+class userlanguage_flags_ui extends e_admin_ui
 {
 			
 		protected $pluginTitle		= USLFM_P_1;
-		protected $pluginName		= 'userlanguage_flags_menu';
-	//	protected $eventName		= 'userlanguage_flags_menu-'; // remove comment to enable event triggers in admin. 		
+		protected $pluginName		= 'userlanguage_flags';
+	//	protected $eventName		= 'userlanguage_flags-'; // remove comment to enable event triggers in admin. 		
 		protected $table			= '';
 		protected $pid				= '';
 		protected $perPage			= 10; 
@@ -110,73 +110,36 @@ class userlanguage_flags_menu_ui extends e_admin_ui
   			),
  
 		),
-		); 
+		);
 
-	
-		public function init()
-		{
-			// Set drop-down values (if any). 
-	
-		}
 
-		
-		// ------- Customize Create --------
-		
-		public function beforeCreate($new_data)
-		{
-			return $new_data;
-		}
-	
-		public function afterCreate($new_data, $old_data, $id)
-		{
-			// do something
-		}
+	// left-panel help menu area. (replaces e_help.php used in old plugins)	
+	public function renderHelp()
+	{
+		$caption = USLFM_H_1;
+		$text = "<table width='97%' class='fborder'>";
+		$text .= '<div class="panel-body">'. USLFM_H_3 . "</div>";
+		$text .= '<div class="panel-body">' . USLFM_H_4 . "</div>";
+		$text .= '<div class="panel-body">' . USLFM_H_5 . "</div>";
+		$text .= '<div class="panel-body">' . USLFM_H_6 . "</div>";
+		$text .= '<div class="panel-body">'.  USLFM_H_7 . "</div>";
+		$text .= "</table>";
 
-		public function onCreateError($new_data, $old_data)
-		{
-			// do something		
-		}		
-		
-		
-		// ------- Customize Update --------
-		
-		public function beforeUpdate($new_data, $old_data, $id)
-		{
-			return $new_data;
-		}
-
-		public function afterUpdate($new_data, $old_data, $id)
-		{
-			// do something	
-		}
-		
-		public function onUpdateError($new_data, $old_data, $id)
-		{
-			// do something		
-		}		
-		
-			
-	/*	
-		// optional - a custom page.  
-		public function customPage()
-		{
-			$text = 'Hello World!';
-			return $text;
-			
-		}
-	*/
+		return array('caption' => $caption, 'text' => $text);
+	}
+	 
 			
 }
 				
 
 
-class userlanguage_flags_menu_form_ui extends e_admin_form_ui
+class userlanguage_flags_form_ui extends e_admin_form_ui
 {
 	// Custom Method/Function 
 	function lanflags_typ($curVal,$mode)
 	{
 		$frm = e107::getForm();	
-    $size = e107::pref('userlanguage_flags_menu', 'lanflags_size');	    
+    $size = e107::pref('userlanguage_flags', 'lanflags_size');	    
 		switch($mode)
 		{
 
@@ -187,19 +150,19 @@ class userlanguage_flags_menu_form_ui extends e_admin_form_ui
 			case 'write': // Edit Page
  			
       $text ="</div><div class='col-md-3 text-center'>
-        <img src='".e_PLUGIN_ABS."userlanguage_flags_menu/flags/0/English.png' style='border: 0px;' width='".$size."' /><br />";
+        <img src='".e_PLUGIN_ABS."userlanguage_flags/flags/0/English.png' style='border: 0px;' width='".$size."' /><br />";
      
       $text .= $frm->radio('lanflags_typ', 0, ($curVal == 0));
       $text .="</div><div class='col-md-3 text-center'>
-        <img src='".e_PLUGIN_ABS."userlanguage_flags_menu/flags/1/English.png' style='border: 0px;' width='".$size."' /><br />";
+        <img src='".e_PLUGIN_ABS."userlanguage_flags/flags/1/English.png' style='border: 0px;' width='".$size."' /><br />";
       
       $text .= $frm->radio('lanflags_typ', 1, ($curVal == 1));  
       $text .="</div><div class='col-md-3 text-center'>
-        <img src='".e_PLUGIN_ABS."userlanguage_flags_menu/flags/2/English.png' style='border: 0px;' width='".$size."' /><br />";
+        <img src='".e_PLUGIN_ABS."userlanguage_flags/flags/2/English.png' style='border: 0px;' width='".$size."' /><br />";
           
       $text .= $frm->radio('lanflags_typ', 2, ($curVal == 2)); 
       $text .="</div><div class='col-md-3 text-center'>
-        <img src='".e_PLUGIN_ABS."userlanguage_flags_menu/flags/3/English.png' style='border: 0px;' width='".$size."' /><br />";
+        <img src='".e_PLUGIN_ABS."userlanguage_flags/flags/3/English.png' style='border: 0px;' width='".$size."' /><br />";
       $text .= $frm->radio('lanflags_typ', 3, ($curVal == 3));
       $text .= '</div>';          
       return $text;  	
@@ -214,7 +177,7 @@ class userlanguage_flags_menu_form_ui extends e_admin_form_ui
 }		
 		
 		
-new userlanguage_flags_menu_adminArea();
+new userlanguage_flags_adminArea();
 
 require_once(e_ADMIN."auth.php");
 e107::getAdminUI()->runPage();
