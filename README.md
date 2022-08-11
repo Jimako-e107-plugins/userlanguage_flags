@@ -1,4 +1,9 @@
-# Userlanguage Flags Menu
+# Userlanguage Flags Plugin
+
+11.08.2022 Version 2.2
+- renamed plugin name (removed word menu)
+- updated e_help
+- tested with PHP 8.1
 
 21.03.2016 Version 2.1.2 
 - added template parameter for main shortcode
